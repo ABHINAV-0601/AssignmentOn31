@@ -12,4 +12,6 @@ public interface EmployeeDAO {
 
    int updateEmployeeByName(int emp_id,String emp_name) throws SQLException, ClassNotFoundException;
    int updateEmployeeBySalary(int emp_id,double emp_salary) throws SQLException, ClassNotFoundException;
+
+   int updateEmployee(int emp_id,String emp_name,double emp_salary) throws SQLException, ClassNotFoundException;
 }

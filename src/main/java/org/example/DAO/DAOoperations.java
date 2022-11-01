@@ -61,6 +61,19 @@ public class DAOoperations implements EmployeeDAO{
         return row;
     }
 
+    @Override
+    public int updateEmployee(int emp_id, String emp_name, double emp_salary) throws SQLException, ClassNotFoundException {
+        int row = 0;
+        Connection connection = DBConfig.getConnection();
+        String sql = "update employeedetails set emp_name=?,emp_salary=? where emp_id=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,emp_name);
+        preparedStatement.setDouble(2,emp_salary);
+        preparedStatement.setInt(3,emp_id);
+        row = preparedStatement.executeUpdate();
+        return row;
+    }
+
     public void printOptions(){
         System.out.println("Press 1 to view all employees"+"\n"+
                             "Press 2 to add an employee"+"\n"+

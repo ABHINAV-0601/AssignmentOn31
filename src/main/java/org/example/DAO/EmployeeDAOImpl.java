@@ -60,7 +60,8 @@ public class EmployeeDAOImpl {
                     while(flag2) {
                         System.out.println("Press 1 to update employee's name"+"\n"+
                                             "Press 2 to update employee's salary"+"\n"+
-                                            "Press 3 to go back");
+                                            "Press 3 to update both name and salary"+"\n"+
+                                            "Press 4 to go back");
                         int c = scanner.nextInt();
                         switch(c) {
                             case 1:
@@ -101,6 +102,27 @@ public class EmployeeDAOImpl {
                                 }
                                 break;
                             case 3:
+                                List<Employee> employeesLists1 = daOoperations.getAllemployees();
+                                System.out.format("%-30s %-30s %-30s\n", "Employee id", "Employee Name", "Employee Salary");
+                                for (Employee employee : employeesLists1) {
+                                    System.out.format("%-30d %-30s %-30s\n", employee.getEmp_id(), employee.getEmp_name(), employee.getEmp_salary());
+                                }
+                                System.out.println("Enter the employee id you want to update");
+                                int id2 = scanner.nextInt();
+                                System.out.println("Enter the name of the employee");
+                                scanner.nextLine();
+                                String name2 = scanner.nextLine();
+                                System.out.println("Enter the salary of the employee");
+                                double salary1 = scanner.nextDouble();
+                                int row3 = daOoperations.updateEmployee(id2,name2,salary1);
+                                if (row3 == 1) {
+                                    System.out.println("Employee updated");
+                                    System.out.println();
+                                } else {
+                                    System.out.println("Employee not updated");
+                                }
+                                break;
+                            case 4:
                                 flag2 = false;
                                 break;
                         }
